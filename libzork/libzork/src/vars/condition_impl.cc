@@ -26,12 +26,4 @@ namespace libzork::vars
         throw std::invalid_argument("Unknown comparison: " + comparison_);
     }
 
-    std::unique_ptr<Condition> make_condition(const store::Store& store,
-                                              const std::string& variable,
-                                              const std::string& comparison,
-                                              int value)
-    {
-        std::make_unique<ConditionImpl>(store, variable, comparison, value);
-    }
-
 } // namespace libzork::vars

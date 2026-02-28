@@ -35,10 +35,11 @@ namespace libzork::store
     {
         std::map<std::string, int> inventory;
         for (const auto& [name, value]: variables_) {
-            if (value > 9 && (!name.empty() && name.back() != '_')) {
+            if (value > 0 && (!name.empty() && name.back() != '_')) {
                 inventory[name] = value;
             }
         }
+        return inventory;
     }
 
 } // namespace libzork::store

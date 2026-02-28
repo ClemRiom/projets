@@ -6,11 +6,11 @@
 namespace libzork::vars
 {
 
-    // std::unique_ptr<Action> make_action(store::Store& store,
-    //                                     const std::string& variable,
-    //                                     const std::string& action, int value)
-    // {
-    //     return std::make_unique<Action>(store, variable, action, name);
-    // }
+    std::unique_ptr<Action> make_action(store::Store& store,
+                                        const std::string& variable,
+                                        const std::string& action, int value)
+    {
+        return std::make_unique<ActionImpl>(store, variable, action, value);
+    }
 
 } // namespace libzork::vars
