@@ -17,26 +17,28 @@ namespace libzork::store
 
     bool StoreImpl::has_variable(const std::string& name) const
     {
-        (void)name;
-        throw NotImplemented();
+        return variables_.contains(name);
     }
 
     int StoreImpl::get_variable(const std::string& name) const
     {
-        (void)name;
-        throw NotImplemented();
+        auto it = variables_.find(name);
+        return (it != variables_.end()) ? it->second : 0;
     }
 
     void StoreImpl::set_variable(const std::string& name, int value)
     {
-        (void)name;
-        (void)value;
-        throw NotImplemented();
+        variables_[name] = value;
     }
 
     std::map<std::string, int> StoreImpl::get_inventory() const
     {
-        throw NotImplemented();
+        std::map<std::string, int> inventory;
+        for (const auto& [name, value]: variables_) {
+            if (value > 9 && (!name.empty() && name.back() != '_')) {
+                inventory[name] = value;
+            }
+        }
     }
 
 } // namespace libzork::store

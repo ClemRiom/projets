@@ -19,6 +19,7 @@ namespace libzork::store
         void set_variable(const std::string& name, int value) override;
         std::map<std::string, int> get_inventory() const override;
 
+        std::map<std::string, int> variables_;
         const story::Node* active_node_ = nullptr;
     };
 
