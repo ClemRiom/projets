@@ -2,6 +2,7 @@
 #define NODE_IMPL_HH
 
 #include <libzork/story/node.hh>
+#include "story/choice.hh"
 
 namespace libzork::story
 {
@@ -22,6 +23,13 @@ namespace libzork::story
             const Node* other, const std::string& text,
             std::vector<std::unique_ptr<vars::Condition>> conditions = {},
             std::vector<std::unique_ptr<vars::Action>> actions = {}) override;
+
+        NodeImpl(std::string name, std::string text);
+        
+    private:
+        std::string name_;
+        std::string text_;
+        std::vector<Choice> choices_;
     };
 
     const NodeImpl& to_impl(const Node& node);

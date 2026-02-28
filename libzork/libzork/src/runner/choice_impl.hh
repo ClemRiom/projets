@@ -9,6 +9,7 @@ namespace libzork::runner
     class ChoiceRunnerImpl : public ChoiceRunner
     {
     public:
+        using ChoiceRunner::ChoiceRunner;
         ~ChoiceRunnerImpl() override = default;
 
         void print_script() const override;

@@ -2,6 +2,10 @@
 #define SMART_IMPL_HH
 
 #include <libzork/runner/smart.hh>
+#include <unordered_map>
+#include <unordered_set>
+#include <string>
+#include <filesystem>
 
 namespace libzork::runner
 {
@@ -16,6 +20,16 @@ namespace libzork::runner
         has_unmatched_token(const std::unordered_set<std::string>& user_tokens,
                             const std::unordered_set<std::string>&
                                 choice_tokens) const override;
+
+        SmartRunnerImpl(std::unique_ptr<story::Story> story,
+                        const fs::path& synonyms_path,
+                        std::istream& is,
+                        std::ostream& os);
+
+        ~SmartRunnerImpl() override = default;
+    private:
+        std::unordered_map<std::string, std::unordered_set<std::string>> synonyms_db_;
+        std::unordered_set<std::string> known_words_;
     };
 
 } // namespace libzork::runner

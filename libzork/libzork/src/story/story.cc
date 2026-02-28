@@ -6,10 +6,9 @@
 namespace libzork::story
 {
 
-    std::unique_ptr<Story> make_story(const fs::path& path)
-    {
-        (void)path;
-        throw NotImplemented();
-    }
+    // std::unique_ptr<Story> make_story(const fs::path& path)
+    // {
+    //     throw NotImplemented();
+    // }
 
 } // namespace libzork::story

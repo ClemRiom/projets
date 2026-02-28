@@ -8,7 +8,7 @@ namespace libzork::store
 
     std::unique_ptr<Store> make_store()
     {
-        throw NotImplemented();
+        return std::make_unique<StoreImpl>();
     }
 
 } // namespace libzork::store

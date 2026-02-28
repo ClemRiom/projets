@@ -15,12 +15,29 @@ namespace libzork::runner
 
     void InteractiveRunner::print_script() const
     {
-        throw NotImplemented();
+        const auto* current_node = story_->get_current();
+        if (current_node) {
+            os_ << current_node->get_text() << "\n";
+        }
     }
 
     void InteractiveRunner::run()
     {
-        throw NotImplemented();
+        while (story_->get_current() && !story_->get_current()->list_choices().empty()) {
+            print_script();
+            bool valid_input = false;
+            while (!valid_input) {
+                os_ << "> ";
+                try {
+                    process_input();
+                    valid_input = true;
+                }
+                catch (const RunnerInterrupt& e) {
+                    os_ << e.what() << "\n";
+                }
+            }
+        }
+        print_script();
     }
 
 } // namespace libzork::runner

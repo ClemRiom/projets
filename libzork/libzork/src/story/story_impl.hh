@@ -16,6 +16,16 @@ namespace libzork::story
         void set_current(const Node* node) override;
         const store::Store* get_store() const override;
         std::ostream& display(std::ostream& os) const override;
+
+        StoryImpl(std::string title, std::map<std::string, std::unique_ptr<Node>> nodes, 
+              const Node* start_node, std::unique_ptr<store::Store> store);
+        store::Store* get_mut_store();
+
+    private:
+        std::string title_;
+        std::map<std::string, std::unique_ptr<Node>> nodes_;
+        std::unique_ptr<store::Store> store_;
+        const Node* current_ = nullptr;
     };
 
     const StoryImpl& to_impl(const Story& story);

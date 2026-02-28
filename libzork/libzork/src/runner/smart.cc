@@ -11,11 +11,7 @@ namespace libzork::runner
                       const fs::path& synonyms_path, std::istream& is,
                       std::ostream& os)
     {
-        (void)story;
-        (void)synonyms_path;
-        (void)is;
-        (void)os;
-        throw NotImplemented();
+        return std::make_unique<SmartRunnerImpl>(std::move(story), synonyms_path, is, os);
     }
 
 } // namespace libzork::runner

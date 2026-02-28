@@ -7,13 +7,12 @@ namespace libzork::store
 
     const story::Node* StoreImpl::get_active_node() const
     {
-        throw NotImplemented();
+        return active_node_;
     }
 
     void StoreImpl::set_active_node(const story::Node* node)
     {
-        (void)node;
-        throw NotImplemented();
+        active_node_ = node;
     }
 
     bool StoreImpl::has_variable(const std::string& name) const
